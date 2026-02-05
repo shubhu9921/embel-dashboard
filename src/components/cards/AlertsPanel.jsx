@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { AlertTriangle, CheckCircle, Info, XCircle, Filter } from "lucide-react";
+import { AlertTriangle, CheckCircle, Info, XCircle, Filter, Search } from "lucide-react";
 
 export default function AlertsPanel({ alerts = [] }) {
     const [filter, setFilter] = useState("All");
+    const [searchTerm, setSearchTerm] = useState("");
 
-    const filteredAlerts = alerts.filter(
-        (a) => filter === "All" || a.type.toLowerCase() === filter.toLowerCase()
-    );
+    const filteredAlerts = alerts.filter((a) => {
+        const matchesType = filter === "All" || a.type.toLowerCase() === filter.toLowerCase();
+        const matchesSearch =
+            a.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            a.message.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchesType && matchesSearch;
+    });
 
     const getIcon = (type) => {
         switch (type.toLowerCase()) {
@@ -36,26 +41,42 @@ export default function AlertsPanel({ alerts = [] }) {
 
     return (
         <div className="flex flex-col h-full">
-            <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                    Alerts
-                    <span className="px-2 py-0.5 rounded-full bg-slate-700 text-xs text-slate-300 font-medium border border-white/5">
-                        {filteredAlerts.length}
-                    </span>
-                </h3>
-                <div className="relative group">
-                    <Filter size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-white transition-colors" />
-                    <select
-                        value={filter}
-                        onChange={(e) => setFilter(e.target.value)}
-                        className="pl-9 pr-4 py-1.5 rounded-lg bg-slate-800/50 border border-white/10 text-sm text-slate-300 focus:text-white focus:bg-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-500/50 appearance-none cursor-pointer hover:border-white/20 transition-all"
-                    >
-                        <option value="All">All Status</option>
-                        <option value="Info">Info</option>
-                        <option value="Warning">Warning</option>
-                        <option value="Critical">Critical</option>
-                        <option value="Success">Success</option>
-                    </select>
+            <div className="flex flex-col gap-4 mb-6">
+                <div className="flex justify-between items-center gap-4">
+                    <h3 className="text-lg font-bold text-white flex items-center gap-2 shrink-0">
+                        Alerts
+                        <span className="px-2 py-0.5 rounded-full bg-slate-700 text-xs text-slate-300 font-medium border border-white/5">
+                            {filteredAlerts.length}
+                        </span>
+                    </h3>
+
+                    {/* Search Bar - Moved to Header Right */}
+                    <div className="relative w-full max-w-[180px] sm:max-w-xs group">
+                        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-hover:text-[#ff6e00] transition-colors" />
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full pl-9 pr-4 py-1.5 rounded-lg bg-slate-800/50 border border-white/10 text-xs text-slate-300 placeholder:text-slate-500 focus:text-white focus:bg-slate-700 focus:outline-none focus:ring-1 focus:ring-[#ff6e00]/50 focus:border-[#ff6e00] transition-all hover:border-[#ff6e00]/30"
+                        />
+                    </div>
+                </div>
+
+                {/* Filters Row - Under Headline */}
+                <div className="flex flex-wrap gap-2 w-full">
+                    {["All", "Critical", "Warning", "Success", "Info"].map((type) => (
+                        <button
+                            key={type}
+                            onClick={() => setFilter(type)}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex-1 sm:flex-none text-center ${filter === type
+                                ? "bg-[#ff6e00] text-white shadow-lg shadow-orange-900/40"
+                                : "bg-slate-800/50 text-slate-400 hover:bg-slate-700 hover:text-white border border-white/5"
+                                }`}
+                        >
+                            {type}
+                        </button>
+                    ))}
                 </div>
             </div>
 
@@ -69,7 +90,7 @@ export default function AlertsPanel({ alerts = [] }) {
                     filteredAlerts.map((alert) => (
                         <div
                             key={alert.id}
-                            className="group p-4 rounded-xl bg-slate-800/40 border border-white/5 hover:bg-slate-800/60 hover:border-white/10 transition-all duration-300"
+                            className="group p-4 rounded-xl bg-slate-800/40 border border-white/5 hover:border-[#ff6e00] hover:shadow-[0_0_15px_rgba(255,110,0,0.3)] transition-all duration-300"
                         >
                             <div className="flex justify-between items-start mb-1">
                                 <div className={`flex items-center gap-2 px-2 py-1 rounded text-xs font-semibold ${getBadgeStyle(alert.type)}`}>

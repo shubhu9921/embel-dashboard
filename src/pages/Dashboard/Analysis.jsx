@@ -256,7 +256,7 @@ export default function AnalysisPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {analyzedDevices.slice(0, 4).map((device) => (
-                            <div key={device.id} className="p-4 rounded-xl bg-slate-800/40 border border-white/5 hover:border-indigo-500/30 transition-all group">
+                            <div key={device.id} className="p-4 rounded-xl bg-slate-800/40 border border-white/5 hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] hover:!bg-slate-800/40 transition-all group">
                                 <div className="flex justify-between items-start mb-3">
                                     <div className="flex flex-col">
                                         <span className="text-sm font-bold text-white group-hover:text-indigo-400 transition-colors">{device.name}</span>
@@ -297,7 +297,7 @@ export default function AnalysisPage() {
                         <h3 className="text-md font-bold text-white mb-4">Live System Parameters</h3>
                         <div className="space-y-4">
                             {liveParams.map((param, i) => (
-                                <div key={i} className="glass-card flex items-center justify-between p-3 rounded-xl group">
+                                <div key={i} className="glass-card flex items-center justify-between p-3 rounded-xl group border border-white/5 hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] hover:!bg-slate-800/40 transition-all duration-300">
                                     <div>
                                         <p className="text-xs text-slate-400">{param.label}</p>
                                         <p className={`text-lg font-bold font-mono ${param.color}`}>{param.value}</p>

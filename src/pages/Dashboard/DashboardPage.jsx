@@ -23,7 +23,7 @@ import {
     WifiOff
 } from "lucide-react";
 import AlertsPanel from "../../components/cards/AlertsPanel";
-import { TimeFilter } from "../../components/filters/TimeFilter";
+
 
 export default function DashboardPage() {
     const [consumptionTimeRange, setConsumptionTimeRange] = useState("1M");
@@ -106,7 +106,7 @@ export default function DashboardPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
                 {/* Total Meter Status */}
-                <div className="glass-panel rounded-2xl p-5 flex flex-col relative overflow-hidden group">
+                <div className="glass-panel rounded-2xl p-5 flex flex-col relative overflow-hidden group border border-white/5 hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] hover:!bg-slate-800/40 transition-all duration-300">
                     <div className="absolute bottom-2 right-2 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
                         <Zap size={80} className="text-white" />
                     </div>
@@ -138,7 +138,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Active System Issues */}
-                <div className="glass-panel rounded-2xl p-5 flex flex-col relative overflow-hidden group">
+                <div className="glass-panel rounded-2xl p-5 flex flex-col relative overflow-hidden group border border-white/5 hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] hover:!bg-slate-800/40 transition-all duration-300">
                     <div className="absolute bottom-2 right-2 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
                         <AlertOctagon size={80} className="text-red-500" />
                     </div>
@@ -162,7 +162,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* Live Sites Placeholder */}
-                <div className="glass-panel rounded-2xl p-5 flex flex-col relative overflow-hidden group">
+                <div className="glass-panel rounded-2xl p-5 flex flex-col relative overflow-hidden group border border-white/5 hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] hover:!bg-slate-800/40 transition-all duration-300">
                     <div className="absolute bottom-2 right-2 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
                         <Globe size={80} className="text-blue-500" />
                     </div>
@@ -184,7 +184,7 @@ export default function DashboardPage() {
                 </div>
 
                 {/* System Health */}
-                <div className="glass-panel rounded-2xl p-5 flex flex-col items-center justify-center relative overflow-hidden group">
+                <div className="glass-panel rounded-2xl p-5 flex flex-col items-center justify-center relative overflow-hidden group border border-white/5 hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] hover:!bg-slate-800/40 transition-all duration-300">
                     <h3 className="text-sm font-semibold text-slate-300 absolute top-5 left-5">System Health</h3>
                     <div className="relative w-32 h-32 flex items-center justify-center">
                         <svg className="w-full h-full transform -rotate-90">
@@ -233,7 +233,9 @@ export default function DashboardPage() {
                                     <button
                                         key={t}
                                         onClick={() => setConsumptionTimeRange(t)}
-                                        className={`px-3 py-1 text-xs rounded-md transition-all ${consumptionTimeRange === t ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/50' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                                        className={`px-3 py-1 text-xs rounded-md transition-all ${consumptionTimeRange === t
+                                            ? 'bg-[#ff6e00] text-white shadow-md shadow-orange-900/20 font-bold'
+                                            : 'text-slate-400 hover:text-white hover:bg-white/5 hover:shadow-[0_0_15px_rgba(255,110,0,0.3)]'}`}
                                     >
                                         {t}
                                     </button>
@@ -301,7 +303,7 @@ export default function DashboardPage() {
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                     {liveParams.map((param, index) => (
-                        <div key={index} className={`glass-card p-4 rounded-xl flex flex-col items-center justify-center text-center group border ${param.border} border-opacity-30 hover:border-opacity-60`}>
+                        <div key={index} className={`glass-card p-4 rounded-xl flex flex-col items-center justify-center text-center group border border-white/5 hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] hover:!bg-slate-800/40 transition-all duration-300`}>
                             <div className={`p-2.5 rounded-full mb-3 ${param.bg} group-hover:scale-110 transition-transform duration-300`}>
                                 <param.icon size={20} className={param.color} />
                             </div>

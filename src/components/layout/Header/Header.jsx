@@ -15,9 +15,7 @@ import {
 /* -------------------------------------------------
    Static Tailwind-safe color map (IMPORTANT)
 -------------------------------------------------- */
-/* -------------------------------------------------
-   Static Tailwind-safe color map (IMPORTANT)
--------------------------------------------------- */
+
 const RESOURCE_STYLES = {
   Solar: {
     active: "bg-amber-500/20 text-amber-300 border border-amber-500/30 neon-text-amber",
@@ -90,15 +88,15 @@ export default function Header({ activePage, setActivePage, onMenuClick }) {
         <div className="relative hidden sm:block w-64 group">
           <Search
             size={18}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-blue-400 transition-colors"
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#fdae44] transition-colors"
           />
           <input
             placeholder="Search dashboard..."
             className="w-full pl-10 pr-4 py-2.5 rounded-xl
               bg-slate-800/50 border border-white/5 text-sm text-white
               placeholder:text-slate-500
-              focus:bg-slate-800/80 focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50
-              outline-none transition-all shadow-inner"
+              focus:bg-slate-800/80 focus:ring-1 focus:ring-[#fdae44]/50 focus:border-[#fdae44]/50
+              outline-none transition-all shadow-inner group-hover:shadow-[0_0_15px_rgba(253,174,68,0.3)]"
           />
         </div>
 
@@ -129,7 +127,7 @@ export default function Header({ activePage, setActivePage, onMenuClick }) {
         <div className="relative" ref={notificationRef}>
           <button
             onClick={() => setNotificationsOpen(!notificationsOpen)}
-            className="peer relative p-2 rounded-full text-slate-400 hover:bg-white/5 hover:text-white transition"
+            className="peer relative p-2 rounded-full text-slate-400 hover:bg-white/5 hover:text-[#fdae44] transition"
           >
             <Bell size={20} />
             <span className="absolute top-2 right-2 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-slate-900 shadow-[0_0_8px_rgba(244,63,94,0.6)]" />
@@ -163,15 +161,7 @@ export default function Header({ activePage, setActivePage, onMenuClick }) {
           )}
         </div>
 
-        <button
-          onClick={handleRefresh}
-          className="p-2 rounded-full text-slate-400 hover:bg-white/5 hover:text-white transition"
-          title="Refresh Data"
-        >
-          <RefreshCw size={20} className={isRefreshing ? "animate-spin" : ""} />
-        </button>
-
-        <button className="p-2 rounded-full text-slate-400 hover:bg-white/5 hover:text-white transition">
+        <button className="p-2 rounded-full text-slate-400 hover:bg-white/5 hover:text-[#fdae44] transition">
           <Settings size={20} />
         </button>
 
@@ -181,7 +171,7 @@ export default function Header({ activePage, setActivePage, onMenuClick }) {
         <div className="relative">
           <button className="peer flex items-center gap-3 px-2 py-1 rounded-full hover:bg-white/5 transition group">
             <div className="hidden lg:block text-right">
-              <p className="text-sm font-semibold text-slate-200 leading-none group-hover:text-white transition">
+              <p className="text-sm font-semibold text-slate-200 leading-none group-hover:text-[#fdae44] transition">
                 Admin User
               </p>
               <p className="text-[11px] text-slate-500 mt-0.5 group-hover:text-slate-400">Super Admin</p>

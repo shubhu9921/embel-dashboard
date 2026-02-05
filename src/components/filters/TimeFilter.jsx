@@ -16,10 +16,9 @@ export function TimeFilter({ selected, onChange, onEnlarge }) {
             onClick={() => onChange(option.value)}
             className={`
               px-3 py-1 text-xs font-semibold rounded-full transition-all duration-200
-              ${
-                selected === option.value
-                  ? "bg-white text-blue-600 shadow-md border border-blue-200"
-                  : "text-gray-500 hover:text-blue-600 hover:bg-gray-200"
+              ${selected === option.value
+                ? "bg-[#ff6e00] text-white shadow-md shadow-orange-900/20 font-bold"
+                : "text-slate-400 hover:text-white hover:bg-white/5 hover:shadow-[0_0_15px_rgba(255,110,0,0.3)]"
               }
             `}
           >

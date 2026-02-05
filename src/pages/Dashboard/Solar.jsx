@@ -139,7 +139,7 @@ export default function SolarPage() {
             {/* -------------------- ROW 1: KPI CARDS -------------------- */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 {/* Output - Zap Icon */}
-                <div className="glass-panel p-4 rounded-xl flex flex-col relative overflow-hidden group">
+                <div className="glass-panel p-4 rounded-xl flex flex-col relative overflow-hidden group hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] transition-all duration-300">
                     <div className="absolute bottom-2 right-2 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
                         <Zap size={48} className="text-amber-500" />
                     </div>
@@ -156,7 +156,7 @@ export default function SolarPage() {
                 </div>
 
                 {/* Daily Yield - Sun Icon */}
-                <div className="glass-panel p-4 rounded-xl flex flex-col relative overflow-hidden group">
+                <div className="glass-panel p-4 rounded-xl flex flex-col relative overflow-hidden group hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] transition-all duration-300">
                     <div className="absolute bottom-2 right-2 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
                         <Sun size={48} className="text-amber-500" />
                     </div>
@@ -170,7 +170,7 @@ export default function SolarPage() {
                 </div>
 
                 {/* Battery - Battery Icon */}
-                <div className="glass-panel p-4 rounded-xl flex flex-col relative overflow-hidden group">
+                <div className="glass-panel p-4 rounded-xl flex flex-col relative overflow-hidden group hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] transition-all duration-300">
                     <div className="absolute bottom-2 right-2 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
                         <Battery size={48} className="text-emerald-500" />
                     </div>
@@ -185,7 +185,7 @@ export default function SolarPage() {
                 </div>
 
                 {/* CO2 Saved - Leaf Icon */}
-                <div className="glass-panel p-4 rounded-xl flex flex-col relative overflow-hidden group">
+                <div className="glass-panel p-4 rounded-xl flex flex-col relative overflow-hidden group hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] transition-all duration-300">
                     <div className="absolute bottom-2 right-2 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
                         <Leaf size={48} className="text-emerald-500" />
                     </div>
@@ -197,7 +197,8 @@ export default function SolarPage() {
                 </div>
 
                 {/* Alerts KPI */}
-                <div className="glass-panel p-4 rounded-xl flex flex-col relative overflow-hidden group border-t-2 border-t-red-500">
+                {/* Alerts KPI */}
+                <div className="glass-panel p-4 rounded-xl flex flex-col relative overflow-hidden group border-t-2 border-t-red-500 hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] transition-all duration-300">
                     <div className="absolute bottom-2 right-2 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
                         <AlertTriangle size={48} className="text-red-500" />
                     </div>
@@ -225,7 +226,9 @@ export default function SolarPage() {
                                 <button
                                     key={t}
                                     onClick={() => setTimeRange(t)}
-                                    className={`px-3 py-1 text-xs rounded-md transition-all ${timeRange === t ? 'bg-amber-600 text-white shadow-lg' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                                    className={`px-3 py-1 text-xs rounded-md transition-all ${timeRange === t
+                                        ? 'bg-[#ff6e00] text-white shadow-md shadow-orange-900/20 font-bold'
+                                        : 'text-slate-400 hover:text-white hover:bg-white/5 hover:shadow-[0_0_15px_rgba(255,110,0,0.3)]'}`}
                                 >
                                     {t}
                                 </button>
@@ -297,7 +300,7 @@ export default function SolarPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
                     {inverters.slice(0, 6).map((meter) => (
-                        <div key={meter.id} className="p-4 rounded-xl bg-slate-800/40 border border-white/5 hover:border-amber-500/30 transition-all group">
+                        <div key={meter.id} className="p-4 rounded-xl bg-slate-800/40 border border-white/5 hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] hover:!bg-slate-800/40 transition-all group">
                             <div className="flex justify-between items-start mb-3">
                                 <div className="flex flex-col">
                                     <span className="text-sm font-bold text-white group-hover:text-amber-400 transition-colors">{meter.name}</span>
@@ -339,7 +342,7 @@ export default function SolarPage() {
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                     {systemStatus.map((item, idx) => (
-                        <div key={idx} className="glass-card p-3 rounded-lg flex flex-col items-center justify-center text-center">
+                        <div key={idx} className="glass-card p-3 rounded-lg flex flex-col items-center justify-center text-center border border-white/5 hover:!border-[#ff6e00] hover:!shadow-[0_0_15px_rgba(255,110,0,0.3)] hover:!bg-slate-800/40 transition-all duration-300">
                             <item.icon size={20} className={`${item.color} mb-2 opacity-80`} />
                             <span className="text-xs text-slate-400 mb-1">{item.label}</span>
                             <span className="text-sm font-bold text-white tracking-wide">{item.value}</span>

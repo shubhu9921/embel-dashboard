@@ -66,18 +66,22 @@ export default function Sidebar({
             onClick={() => setActivePage(item.name)}
             title={collapsed ? item.name : ""}
             className={`
-              flex items-center gap-3 w-full px-3 py-2 rounded-lg transition group relative
+              flex items-center gap-3 w-full py-3 rounded-lg transition-all duration-200 group relative
               ${activePage === item.name
-                ? "bg-blue-600/20 text-blue-400 font-semibold shadow-[0_0_15px_rgba(37,99,235,0.2)] border border-blue-500/20"
-                : "text-slate-400 hover:bg-white/5 hover:text-white"}
-              ${collapsed ? "justify-center" : ""}
+                ? "bg-orange-500 text-white font-bold shadow-md shadow-orange-900/20"
+                : "text-slate-300 font-medium hover:bg-white/10 hover:text-white"
+              }
+              ${collapsed ? "justify-center" : "px-3"}
             `}
           >
             <item.icon
               size={20}
               className={`
                     transition-colors
-                    ${activePage === item.name ? "text-blue-400 drop-shadow-[0_0_5px_rgba(59,130,246,0.5)]" : "group-hover:text-slate-300"}
+                    ${activePage === item.name
+                  ? "text-white"
+                  : "text-slate-400 group-hover:text-white"
+                }
                 `}
             />
             {!collapsed && (

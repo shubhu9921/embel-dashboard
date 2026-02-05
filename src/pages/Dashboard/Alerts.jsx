@@ -66,7 +66,7 @@ export default function AlertsPage() {
                 </div>
                 <div className="flex gap-3">
 
-                    <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm transition-colors shadow-lg shadow-blue-900/40">
+                    <button className="flex items-center gap-2 px-4 py-2  hover:bg-[#e66300] text-white rounded-lg text-sm transition-colors shadow-lg shadow-orange-900/40">
                         <Check size={16} /> Mark All Read
                     </button>
                 </div>
@@ -83,8 +83,8 @@ export default function AlertsPage() {
                                 key={f}
                                 onClick={() => setFilter(f)}
                                 className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all capitalize ${filter === f
-                                    ? "bg-slate-700 text-white shadow-sm"
-                                    : "text-slate-400 hover:text-white hover:bg-white/5"
+                                    ? "bg-[#ff6e00] text-white shadow-md shadow-orange-900/20 font-bold"
+                                    : "text-slate-400 hover:text-white hover:bg-white/5 hover:shadow-[0_0_15px_rgba(255,110,0,0.3)]"
                                     }`}
                             >
                                 {f}
@@ -93,12 +93,12 @@ export default function AlertsPage() {
                     </div>
 
                     <div className="relative w-full md:w-72 group">
-                        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-400 transition-colors" />
+                        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#fdae44] transition-colors" />
                         <input
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             placeholder="Search logs..."
-                            className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-800/50 border border-white/5 text-sm text-white focus:bg-slate-800 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 outline-none transition-all placeholder:text-slate-600"
+                            className="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-800/50 border border-white/5 text-sm text-white focus:bg-slate-800 focus:border-[#fdae44]/50 focus:ring-1 focus:ring-[#fdae44]/50 outline-none transition-all placeholder:text-slate-600 hover:shadow-[0_0_15px_rgba(253,174,68,0.3)]"
                         />
                     </div>
                 </div>
@@ -111,7 +111,7 @@ export default function AlertsPage() {
                                 <div
                                     key={alert.id}
                                     className={`
-                                        group flex flex-col md:flex-row items-start md:items-center gap-4 p-4 border-b border-white/5 hover:bg-white/[0.02] transition-colors
+                                        group flex flex-col md:flex-row items-start md:items-center gap-4 p-4 border-b border-white/5 hover:border-[#ff6e00] hover:shadow-[0_0_15px_rgba(255,110,0,0.3)] transition-all duration-200 rounded-lg my-1 border-transparent
                                         ${index === filteredAlerts.length - 1 ? 'border-b-0' : ''}
                                     `}
                                 >
